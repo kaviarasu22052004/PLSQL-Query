@@ -1,0 +1,22 @@
+SET SERVEROUTPUT ON;
+
+
+ FUNCTION factorial(n IN NUMBER) RETURN NUMBER IS
+    result NUMBER := 1;
+  BEGIN
+        FOR i IN 2..n LOOP
+        result := result * i;
+      END LOOP;
+      RETURN result;
+     END;
+/
+
+DECLARE
+  num NUMBER := 5;          
+  fact_result NUMBER;  
+  
+BEGIN
+  fact_result := factorial(num); 
+  DBMS_OUTPUT.PUT_LINE('Factorial' || fact_result);
+END;
+/

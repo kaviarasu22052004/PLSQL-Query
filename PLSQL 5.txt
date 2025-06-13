@@ -1,0 +1,13 @@
+SET SERVEROUTPUT ON;
+
+DECLARE
+  n     NUMBER := &Enter_Number; 
+  fact  NUMBER := 1;              
+  i     NUMBER;
+BEGIN
+    FOR i IN 1..n LOOP
+      fact := fact * i;
+    END LOOP;
+    DBMS_OUTPUT.PUT_LINE('Factorial of '|| fact);
+END;
+/

@@ -1,0 +1,28 @@
+TRIGGERS
+
+
+create  or replace Tri Name
+{before /after/instead of
+ 
+insert /update/delete
+on table 
+for each row 
+when (condition )
+ 
+begin
+end
+
+-----------------------------------
+
+CREATE OR REPLACE TRIGGER BankTr
+AFTER INSERT ON transaction
+FOR EACH ROW
+WHEN (NEW.TRANS_TYPE = 'deposit')
+BEGIN
+    UPDATE customer
+    SET balance = balance + :NEW.amount
+    WHERE cust_id = :NEW.cust_id;
+END;
+/
+
+SQL> insert into transaction values(2,101,100,'deposit',sysdate);

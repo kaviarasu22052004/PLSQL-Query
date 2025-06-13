@@ -1,0 +1,39 @@
+CREATE TABLE books (
+  name VARCHAR2(100),
+  qty NUMBER,
+  price NUMBER(8, 2),
+  book_type VARCHAR2(10)
+);
+
+INSERT INTO books (name, qty, price, book_type) VALUES ('Java Programming', 10, 450.00, 'IT');
+INSERT INTO books (name, qty, price, book_type) VALUES ('History Book', 3, 300.00, 'Non IT');
+
+SET SERVEROUTPUT ON;
+
+DECLARE
+  book_name VARCHAR2 := '&book_name';
+  Original_price NUMBER;
+  book_types VARCHAR2;
+  discount_percent NUMBER;
+  discounted_price NUMBER;
+BEGIN
+ 
+  SELECT price, book_type INTO Original_price, book_types
+  FROM books
+  WHERE name = book_name;
+
+  IF book_types = 'IT' THEN
+    discount_percent := 5;
+  ELSE
+    discount_percent := 10;
+  END IF;
+
+  discounted_price := Original_price - (Original_price* discount_percent / 100);
+
+
+  DBMS_OUTPUT.PUT_LINE('Original Price: ' || Original_price);
+
+  DBMS_OUTPUT.PUT_LINE('Discounted Price: ' || discounted_price);
+
+  END;
+  /

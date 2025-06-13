@@ -1,0 +1,27 @@
+CREATE TABLE student (
+  roll NUMBER,
+  fee  NUMBER
+);
+INSERT INTO student (roll, fee) VALUES (101, 300);
+INSERT INTO student (roll, fee) VALUES (102, 400);
+
+SET SERVEROUTPUT ON;
+
+DECLARE
+  Roll NUMBER;
+  Fee  NUMBER;
+
+BEGIN
+  SELECT roll, fee INTO Roll, Fee 
+  FROM student 
+  WHERE roll = 101;
+
+  IF Fee > 200 THEN 
+    UPDATE student SET fee = fee + 100 WHERE roll = 101;
+  ELSE
+    UPDATE student SET fee = fee + 200 WHERE roll = 101;
+  END IF;
+
+  DBMS_OUTPUT.PUT_LINE('Roll: ' || Roll || ', Fee: ' || Fee);
+END;
+/

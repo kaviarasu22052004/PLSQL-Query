@@ -1,0 +1,13 @@
+SET SERVEROUTPUT ON;
+
+DECLARE
+  name VARCHAR2(20) := 'kaviarasu P';
+  age  NUMBER := 21;
+  dept VARCHAR2(20) := 'ECE';
+
+BEGIN
+  DBMS_OUTPUT.PUT_LINE('Your name is ' || name);
+  DBMS_OUTPUT.PUT_LINE('Your age is ' || age);
+  DBMS_OUTPUT.PUT_LINE('Your department is ' || dept);
+END;
+/

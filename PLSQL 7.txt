@@ -1,0 +1,24 @@
+SET SERVEROUTPUT ON;
+
+DECLARE
+  Roll NUMBER;
+  Fee  NUMBER;
+  rollno NUMBER := &rollno;
+BEGIN
+  SELECT roll, fee INTO Roll, Fee 
+  FROM student 
+  WHERE roll = rollno;
+
+  IF Fee > 200 THEN 
+    UPDATE student SET fee = fee + 100 WHERE roll = rollno;
+  ELSE
+    UPDATE student SET fee = fee + 200 WHERE roll = rollno;
+  END IF;
+
+  SELECT fee INTO Fee FROM student WHERE roll = rollno;
+
+  DBMS_OUTPUT.PUT_LINE(Roll || Fee);
+
+  COMMIT;
+END;
+/

@@ -1,0 +1,17 @@
+SET SERVEROUTPUT ON;
+
+DECLARE
+  input_userid   VARCHAR2(20) := '&userid';     
+  input_password VARCHAR2(20) := '&password';   
+  valid_userid   VARCHAR2(20) := 'Kaviarasu';
+  valid_password VARCHAR2(20) := 'Kavin';
+
+BEGIN
+  IF input_userid = valid_userid AND input_password = valid_password THEN
+    DBMS_OUTPUT.PUT_LINE('User id and Password are valid');
+  ELSE
+    DBMS_OUTPUT.PUT_LINE('Invalid User id or Password.');
+  END IF;
+
+END;
+/

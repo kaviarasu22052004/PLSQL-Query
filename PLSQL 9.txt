@@ -1,0 +1,25 @@
+SET SERVEROUTPUT ON;
+
+CREATE OR REPLACE PROCEDURE CalculateBonus(salary IN NUMBER) AS
+  bonus NUMBER;
+  Total NUMBER;
+BEGIN
+  IF salary <= 5000 THEN
+    bonus := salary * 0.05;
+  ELSE
+    bonus := salary * 0.10;
+  END IF;
+
+  Total := salary + bonus;
+
+  DBMS_OUTPUT.PUT_LINE('Salary: ' || salary);
+  DBMS_OUTPUT.PUT_LINE('After Bonus: ' || Total);
+END;
+/
+
+
+
+BEGIN
+  CalculateBonus(6000);  
+END;
+/
